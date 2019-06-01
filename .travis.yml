@@ -9,6 +9,6 @@ script:
   - npm run cov
 
 deploy:
-  skip_cleanup: true
+  - skip_cleanup: true
   - provider: script
     script: npm run cov:send
