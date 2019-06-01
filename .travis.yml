@@ -1,4 +1,6 @@
 language: node_js
+git:
+  depth: 3
 cache: npm
 
 install:
@@ -8,7 +10,18 @@ script:
   - npm test
   - npm run cov
 
+before_deploy:
+  script: npm run prepare-release
+
 deploy:
   skip_cleanup: true
-  provider: script
-  script: npm run cov:send
+  - provider: script
+    script: npm run cov:send
+  - provider: script
+    script: git push --follow-tags origin master
+    on:
+      branch: master
+  - provider: script
+    script: npm publish
+    on:
+      tags: true
