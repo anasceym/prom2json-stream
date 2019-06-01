@@ -24,9 +24,12 @@ deploy:
     script: npm run cov:send
     skip_cleanup: true
   - provider: script
-    script: 
-      - npm run ci:doc:publish
-      - git push --follow-tags origin-ci master
+    script: npm run ci:doc:publish
+    skip_cleanup: true
+    on:
+      branch: master
+  - provider: script
+    script: git push --follow-tags origin-ci master
     skip_cleanup: true
     on:
       branch: master
