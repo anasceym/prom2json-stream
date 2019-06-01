@@ -11,7 +11,7 @@ script:
   - npm run cov
 
 before_deploy:
-  script: npm run prepare-release
+  - npm run prepare-release
 
 deploy:
   - provider: script
