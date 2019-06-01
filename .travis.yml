@@ -15,7 +15,7 @@ before_deploy:
     export DEPLOYMENT_SETUP="true" &&
     git config --local user.name "travis@travis-ci.org" &&
     git config --local user.email "Travis CI" &&
-    npm run ci:prepare-release
+    npm run ci:prepare-release;
   fi
 
 deploy:
