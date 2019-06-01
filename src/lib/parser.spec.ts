@@ -115,3 +115,19 @@ cdastatsd_bgp_route_total 1
     }
   ])
 })
+
+test('parse unknown line', async t => {
+  // Prepare
+  const metricsBuff = `
+a
+b
+c
+d
+c
+`
+  // Action
+  const result = await testRunner(metricsBuff)
+
+  // Assert
+  t.deepEqual(result.length, 0)
+})
