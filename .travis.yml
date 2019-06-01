@@ -11,7 +11,9 @@ script:
   - npm run cov
 
 before_deploy:
-  - npm run prepare-release
+  - git config --local user.name "travis@travis-ci.org"
+  - git config --local user.email "Travis CI"
+  - npm run ci:prepare-release
 
 deploy:
   - provider: script
