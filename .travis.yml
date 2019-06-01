@@ -14,14 +14,16 @@ before_deploy:
   script: npm run prepare-release
 
 deploy:
-  skip_cleanup: true
   - provider: script
     script: npm run cov:send
+    skip_cleanup: true
   - provider: script
     script: git push --follow-tags origin master
+    skip_cleanup: true
     on:
       branch: master
   - provider: script
     script: npm publish
+    skip_cleanup: true
     on:
       tags: true
