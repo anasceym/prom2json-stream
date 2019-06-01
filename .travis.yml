@@ -11,16 +11,19 @@ script:
   - npm run cov
 
 before_deploy:
-  - git config --local user.name "travis@travis-ci.org"
-  - git config --local user.email "Travis CI"
-  - npm run ci:prepare-release
+  if ! [[ $DEPLOYMENT_SETUP ]]; then
+    export DEPLOYMENT_SETUP="true" &&
+    git config --local user.name "$USER_NAME" &&
+    git config --local user.email "$USER_EMAIL" &&
+    npm run ci:prepare-release
+  fi
 
 deploy:
   - provider: script
     script: npm run cov:send
     skip_cleanup: true
   - provider: script
-    script: git push --follow-tags origin master
+    script: npm run ci:doc:publish && git push --follow-tags origin master
     skip_cleanup: true
     on:
       branch: master
