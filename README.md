@@ -1,4 +1,4 @@
-# prom2json-stream  [![Build Status][travis-badge]][travis-url] [![codecov][codecov-badge]][codecov-url]
+# prom2json-stream  [![Build Status][travis-badge]][travis-url] [![codecov][codecov-badge]][codecov-url] [![npm][npm-badge]][npm-url]
 
 `prom2json-stream` is a NodeJS stream transformer to parse Prometheus exporters' metrics into JSON
 
@@ -101,3 +101,5 @@ This library only accepting string/buffer that has been splitted by newline. Ple
 [travis-url]:https://travis-ci.org/anasceym/prom2json-stream
 [codecov-badge]:https://codecov.io/gh/anasceym/prom2json-stream/branch/master/graph/badge.svg
 [codecov-url]:https://codecov.io/gh/anasceym/prom2json-stream
+[npm-badge]:https://img.shields.io/npm/v/prom2json-stream.svg
+[npm-url]:https://www.npmjs.com/package/prom2json-stream
