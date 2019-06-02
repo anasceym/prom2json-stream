@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Options | bunyan-rollbar-stream</title>
+	<title>Metric | prom2json-stream</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">bunyan-rollbar-stream</a>
+					<a href="../index.html" class="title">prom2json-stream</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="options.html">Options</a>
+					<a href="metric.html">Metric</a>
 				</li>
 			</ul>
-			<h1>Interface Options</h1>
+			<h1>Interface Metric</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Options</span>
+						<span class="target">Metric</span>
 					</li>
 				</ul>
 			</section>
@@ -78,24 +78,87 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-not-exported">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="options.html#rollbar" class="tsd-kind-icon">rollbar</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metric.html#help" class="tsd-kind-icon">help</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metric.html#labels" class="tsd-kind-icon">labels</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metric.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metric.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metric.html#typechecked" class="tsd-kind-icon">type<wbr>Checked</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metric.html#value" class="tsd-kind-icon">value</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="rollbar" class="tsd-anchor"></a>
-					<h3>rollbar</h3>
-					<div class="tsd-signature tsd-kind-icon">rollbar<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Rollbar</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="help" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> help</h3>
+					<div class="tsd-signature tsd-kind-icon">help<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/anasceym/bunyan-rollbar-stream/blob/d3c7f01/src/lib/create-bunyan-rollbar-stream.ts#L4">lib/create-bunyan-rollbar-stream.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/anasceym/prom2json-stream/blob/cdc731f/src/lib/parser.ts#L5">lib/parser.ts:5</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="labels" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> labels</h3>
+					<div class="tsd-signature tsd-kind-icon">labels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/anasceym/prom2json-stream/blob/cdc731f/src/lib/parser.ts#L9">lib/parser.ts:9</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-index-signature">
+								<h5><span class="tsd-signature-symbol">[</span>index: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="name" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/anasceym/prom2json-stream/blob/cdc731f/src/lib/parser.ts#L4">lib/parser.ts:4</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="type" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/anasceym/prom2json-stream/blob/cdc731f/src/lib/parser.ts#L6">lib/parser.ts:6</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="typechecked" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> type<wbr>Checked</h3>
+					<div class="tsd-signature tsd-kind-icon">type<wbr>Checked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/anasceym/prom2json-stream/blob/cdc731f/src/lib/parser.ts#L7">lib/parser.ts:7</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="value" class="tsd-anchor"></a>
+					<h3>value</h3>
+					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/anasceym/prom2json-stream/blob/cdc731f/src/lib/parser.ts#L8">lib/parser.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -113,21 +176,33 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-is-not-exported">
-						<a href="options.html" class="tsd-kind-icon">Options</a>
+					<li class="current tsd-kind-interface">
+						<a href="metric.html" class="tsd-kind-icon">Metric</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="options.html#rollbar" class="tsd-kind-icon">rollbar</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="metric.html#help" class="tsd-kind-icon">help</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="metric.html#labels" class="tsd-kind-icon">labels</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="metric.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="metric.html#type" class="tsd-kind-icon">type</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="metric.html#typechecked" class="tsd-kind-icon">type<wbr>Checked</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="metric.html#value" class="tsd-kind-icon">value</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-function">
-						<a href="../globals.html#bunyanrollbarstream" class="tsd-kind-icon">Bunyan<wbr>Rollbar<wbr>Stream</a>
-					</li>
-					<li class=" tsd-kind-object-literal tsd-is-not-exported">
-						<a href="../globals.html#namefromlevel" class="tsd-kind-icon">name<wbr>From<wbr>Level</a>
+						<a href="../globals.html#prom2json" class="tsd-kind-icon">Prom2<wbr>Json</a>
 					</li>
 				</ul>
 			</nav>

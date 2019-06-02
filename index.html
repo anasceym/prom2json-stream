@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>bunyan-rollbar-stream</title>
+	<title>prom2json-stream</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">bunyan-rollbar-stream</a>
+					<a href="index.html" class="title">prom2json-stream</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> bunyan-rollbar-stream</h1>
+			<h1> prom2json-stream</h1>
 		</div>
 	</div>
 </header>
@@ -64,40 +64,83 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="bunyan-rollbar-stream">bunyan-rollbar-stream</h1>
-				<blockquote>
-					<p>Bunyan stream for sending Rollbar</p>
-				</blockquote>
-				<p><a href="https://npmjs.org/package/bunyan-rollbar-stream"><img src="https://nodei.co/npm/bunyan-rollbar-stream.svg?downloads=true" alt="NPM"></a>
-				<a href="https://travis-ci.org/anasceym/bunyan-rollbar-stream"><img src="https://travis-ci.org/anasceym/bunyan-rollbar-stream.svg?branch=master" alt="Build Status"></a></p>
-				<h2 id="install">Install</h2>
-				<p>With NPM</p>
-				<pre><code class="language-bash">npm install --save bunyan-rollbar-stream</code></pre>
-				<h2 id="usage">Usage</h2>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> Rollbar <span class="hljs-keyword">from</span> <span class="hljs-string">'rollbar'</span>
-<span class="hljs-keyword">import</span> bunyan <span class="hljs-keyword">from</span> <span class="hljs-string">'bunyan'</span>
-<span class="hljs-keyword">import</span> BunyanRollbarStream <span class="hljs-keyword">from</span> <span class="hljs-string">'bunyan-rollbar-stream'</span>
-
-<span class="hljs-keyword">var</span> rollbar = <span class="hljs-keyword">new</span> Rollbar({
-  <span class="hljs-attr">accessToken</span>: <span class="hljs-string">'MY-ROLLBAR-ACCESS-TOKEN'</span>,
-})
-
-<span class="hljs-keyword">var</span> log = bunyan.createLogger({
-  <span class="hljs-attr">name</span>: <span class="hljs-string">'my-app'</span>,
-  <span class="hljs-attr">serializers</span>: bunyan.stdSerializers,
-  <span class="hljs-attr">streams</span>: [
-    {
-      <span class="hljs-attr">name</span>: <span class="hljs-string">'rollbar'</span>,
-      <span class="hljs-attr">stream</span>: <span class="hljs-keyword">new</span> BunyanRollbarStream({
-        <span class="hljs-attr">rollbar</span>: rollbar
-      }),
-      <span class="hljs-attr">level</span>: <span class="hljs-string">'error'</span>
+				<h1 id="prom2json-stream-build-status-codecov-npm">prom2json-stream  <a href="https://travis-ci.org/anasceym/prom2json-stream"><img src="https://travis-ci.org/anasceym/prom2json-stream.svg?branch=master" alt="Build Status"></a> <a href="https://codecov.io/gh/anasceym/prom2json-stream"><img src="https://codecov.io/gh/anasceym/prom2json-stream/branch/master/graph/badge.svg" alt="codecov"></a> <a href="https://www.npmjs.com/package/prom2json-stream"><img src="https://img.shields.io/npm/v/prom2json-stream.svg" alt="npm"></a></h1>
+				<p><code>prom2json-stream</code> is a NodeJS stream transformer to parse Prometheus exporters&#39; metrics into JSON</p>
+				<h4 id="example">Example</h4>
+				<pre><code># HELP go_memstats_alloc_bytes Number <span class="hljs-keyword">of</span> bytes allocated and still <span class="hljs-keyword">in</span> use.
+# TYPE go_memstats_alloc_bytes gauge
+go_memstats_alloc_bytes <span class="hljs-number">2.787184e+06</span>
+# HELP promhttp_metric_handler_requests_total Total number <span class="hljs-keyword">of</span> scrapes by HTTP status <span class="hljs-keyword">code</span>.
+# TYPE promhttp_metric_handler_requests_total counter
+promhttp_metric_handler_requests_total{<span class="hljs-keyword">code</span>=<span class="hljs-string">"200"</span>} <span class="hljs-number">139170</span>
+promhttp_metric_handler_requests_total{<span class="hljs-keyword">code</span>=<span class="hljs-string">"500"</span>} <span class="hljs-number">0</span>
+promhttp_metric_handler_requests_total{<span class="hljs-keyword">code</span>=<span class="hljs-string">"503"</span>} <span class="hljs-number">0</span></code></pre><p>transformed into</p>
+				<pre><code class="language-json">[
+  {  
+    <span class="hljs-attr">"help"</span>:<span class="hljs-string">"Number of bytes allocated and still in use."</span>,
+    <span class="hljs-attr">"name"</span>:<span class="hljs-string">"go_memstats_alloc_bytes"</span>,
+    <span class="hljs-attr">"type"</span>:<span class="hljs-string">"gauge"</span>,
+    <span class="hljs-attr">"value"</span>:<span class="hljs-number">2787184</span>
+  },
+  {  
+    <span class="hljs-attr">"help"</span>:<span class="hljs-string">"Total number of scrapes by HTTP status code."</span>,
+    <span class="hljs-attr">"name"</span>:<span class="hljs-string">"promhttp_metric_handler_requests_total"</span>,
+    <span class="hljs-attr">"type"</span>:<span class="hljs-string">"counter"</span>,
+    <span class="hljs-attr">"value"</span>:<span class="hljs-number">139170</span>,
+    <span class="hljs-attr">"labels"</span>:{  
+      <span class="hljs-attr">"code"</span>:<span class="hljs-string">"200"</span>
     }
-  ]
-})
+  },
+  {  
+    <span class="hljs-attr">"help"</span>:<span class="hljs-string">"Total number of scrapes by HTTP status code."</span>,
+    <span class="hljs-attr">"name"</span>:<span class="hljs-string">"promhttp_metric_handler_requests_total"</span>,
+    <span class="hljs-attr">"type"</span>:<span class="hljs-string">"counter"</span>,
+    <span class="hljs-attr">"value"</span>:<span class="hljs-number">0</span>,
+    <span class="hljs-attr">"labels"</span>:{  
+      <span class="hljs-attr">"code"</span>:<span class="hljs-string">"500"</span>
+    }
+  },
+  {  
+    <span class="hljs-attr">"help"</span>:<span class="hljs-string">"Total number of scrapes by HTTP status code."</span>,
+    <span class="hljs-attr">"name"</span>:<span class="hljs-string">"promhttp_metric_handler_requests_total"</span>,
+    <span class="hljs-attr">"type"</span>:<span class="hljs-string">"counter"</span>,
+    <span class="hljs-attr">"value"</span>:<span class="hljs-number">0</span>,
+    <span class="hljs-attr">"labels"</span>:{  
+      <span class="hljs-attr">"code"</span>:<span class="hljs-string">"503"</span>
+    }
+  }
+]</code></pre>
+				<h2 id="installation">Installation</h2>
+				<p>Using NPM</p>
+				<pre><code class="language-bash">npm install prom2json-stream</code></pre>
+				<h2 id="usage">Usage</h2>
+				<p>From a readable stream</p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> Prom2Json = <span class="hljs-built_in">require</span>(<span class="hljs-string">'prom2json-stream'</span>)
+<span class="hljs-keyword">var</span> split = <span class="hljs-built_in">require</span>(<span class="hljs-string">'binary-split'</span>)
 
-<span class="hljs-comment">// This line will automatically sends error to Rollbar</span>
-log.error({ <span class="hljs-attr">err</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Error'</span>) }, <span class="hljs-string">'Some error occurred'</span>)</code></pre>
+<span class="hljs-keyword">var</span> buffer = <span class="hljs-string">`
+# HELP go_memstats_alloc_bytes Number of bytes allocated and still in use.
+# TYPE go_memstats_alloc_bytes gauge
+go_memstats_alloc_bytes 2.787184e+06
+`</span>
+<span class="hljs-keyword">var</span> stream = <span class="hljs-keyword">new</span> Readable()
+stream.push(buffer)
+stream.push(<span class="hljs-literal">null</span>)
+
+stream
+  .pipe(split())
+  .pipe(Prom2Json())
+  .on(<span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(data)
+  })
+<span class="hljs-comment">// {</span>
+<span class="hljs-comment">//    "help": "Number of bytes allocated and still in use.",</span>
+<span class="hljs-comment">//    "name": "go_memstats_alloc_bytes",</span>
+<span class="hljs-comment">//    "type": "gauge",</span>
+<span class="hljs-comment">//    "value": 2787184</span>
+<span class="hljs-comment">//  }</span></code></pre>
+				<h2 id="caveats">Caveats</h2>
+				<p>This library only accepting string/buffer that has been splitted by newline. Please consider using any working splitter (eg: <a href="https://github.com/maxogden/binary-split">binary-split</a></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -110,14 +153,11 @@ log.error({ <span class="hljs-attr">err</span>: <span class="hljs-keyword">new</
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-is-not-exported">
-						<a href="interfaces/options.html" class="tsd-kind-icon">Options</a>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/metric.html" class="tsd-kind-icon">Metric</a>
 					</li>
 					<li class=" tsd-kind-function">
-						<a href="globals.html#bunyanrollbarstream" class="tsd-kind-icon">Bunyan<wbr>Rollbar<wbr>Stream</a>
-					</li>
-					<li class=" tsd-kind-object-literal tsd-is-not-exported">
-						<a href="globals.html#namefromlevel" class="tsd-kind-icon">name<wbr>From<wbr>Level</a>
+						<a href="globals.html#prom2json" class="tsd-kind-icon">Prom2<wbr>Json</a>
 					</li>
 				</ul>
 			</nav>
