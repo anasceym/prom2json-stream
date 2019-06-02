@@ -15,7 +15,12 @@ deploy:
     script: npm run cov:send
     skip_cleanup: true
   - provider: script
-    script: npm publish
+    script: 
+      npm run ci:prepare-release &&
+      git config --local user.name "travis@travis-ci.org" &&
+      git config --local user.email "Travis CI" &&
+      gh-pages -m \"[ci skip] Updates\" -r https://$GH_TOKEN@github.com/anasceym/prom2json-stream.git -d build/docs &&
+      npm publish
     skip_cleanup: true
     on:
       tags: true
