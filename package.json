@@ -1,6 +1,6 @@
 {
   "name": "prom2json-stream",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Parse Prometheus exporter metrics to JSON",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
