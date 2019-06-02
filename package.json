@@ -32,8 +32,7 @@
     "reset": "git clean -dfx && git reset --hard && npm ci",
     "clean": "trash build test",
     "all": "run-s reset test cov:check doc:html",
-    "prepare-release": "run-s all version",
-    "ci:prepare-release": "run-s all version"
+    "prepare-release": "run-s all version"
   },
   "scripts-info": {
     "info": "Display information about the package scripts",

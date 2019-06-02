@@ -16,7 +16,7 @@ deploy:
     skip_cleanup: true
   - provider: script
     script: 
-      npm run ci:prepare-release &&
+      npm run all &&
       git config --local user.name "travis@travis-ci.org" &&
       git config --local user.email "Travis CI" &&
       gh-pages -m \"[ci skip] Updates\" -r https://$GH_TOKEN@github.com/anasceym/prom2json-stream.git -d build/docs &&
