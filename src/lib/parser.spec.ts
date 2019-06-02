@@ -3,7 +3,7 @@ import test from 'ava'
 import split from 'binary-split'
 import { Readable } from 'stream'
 
-import Prom2Json, { Metric } from './parser'
+import { Metric, Prom2Json } from './parser'
 
 function testRunner(input: string): Promise<Metric[]> {
   const stream = new Readable()

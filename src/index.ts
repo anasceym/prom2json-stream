@@ -1,1 +1,1 @@
-export * from './lib/parser'
+export { Prom2Json, Metric } from './lib/parser'

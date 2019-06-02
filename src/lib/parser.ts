@@ -9,7 +9,7 @@ export interface Metric {
   labels?: { [index: string]: string }
 }
 
-export default function Prom2Json() {
+export function Prom2Json() {
   const metric: Metric = {
     typeChecked: false,
     value: 0
